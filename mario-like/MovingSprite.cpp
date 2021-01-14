@@ -13,7 +13,7 @@ void MovingSprite::walk(Direction direction, sf::Time elapsed)
 		return;
 	}
 
-	m_speed += m_acceleration * elapsed.asMilliseconds;
+	m_speed += m_acceleration * elapsed.asMilliseconds();
 }
 
 void MovingSprite::jump(float strength)
