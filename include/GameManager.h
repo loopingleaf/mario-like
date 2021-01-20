@@ -1,9 +1,10 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include <vector>
-
+#include "SFML/Graphics.hpp"
 #include "Entity.h"
+#include "InputManager.h"
+
 class Entity;
 class GameManager
 {
@@ -14,14 +15,23 @@ public :
 	sf::RenderWindow* window;
 	std::vector<Entity*> entities;
 	sf::Clock clock;
+	InputManager inputManager;
 
 	GameManager();
 	GameManager(const int windowW, const int windowH);
 	~GameManager() = default;
 
+	void start();
+
+	/**
+	 * \brief Logic loop
+	 */
 	void update();
 
 	//TODO Gestion des boucles de draw
+	/**
+	 * \brief Render loop
+	 */
 	void draw();
 
 	

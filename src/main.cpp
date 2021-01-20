@@ -1,8 +1,9 @@
-#include <SFML/Graphics.hpp>
-#include "../include/GameManager.h"
+#include "SFML/Graphics.hpp"
+#include "GameManager.h"
+#include <iostream>
 
 int main()
 {
 	GameManager gm;
-	gm.update();
+	gm.start();
 }

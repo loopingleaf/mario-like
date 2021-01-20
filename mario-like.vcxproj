@@ -104,6 +104,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\component\Movement.cpp" />
     <ClCompile Include="src\Ennemy.cpp" />
     <ClCompile Include="src\Entity.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="include\Ennemy.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\GameManager.h" />
+    <ClInclude Include="include\InputManager.h" />
     <ClInclude Include="include\Player.h" />
   </ItemGroup>
   <ItemGroup>

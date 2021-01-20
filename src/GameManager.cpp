@@ -1,12 +1,11 @@
-#include <SFML/Graphics.hpp>
-#include "../include/GameManager.h"
-
 #include <iostream>
+#include "SFML/Graphics.hpp"
+#include "GameManager.h"
 
 GameManager::GameManager() : window(nullptr)
 {
 	window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Mari0");
-	clock;
+	inputManager;
 }
 
 GameManager::GameManager(const int windowW, const int windowH) : window(nullptr)
@@ -14,12 +13,14 @@ GameManager::GameManager(const int windowW, const int windowH) : window(nullptr)
 	window = new sf::RenderWindow(sf::VideoMode(windowW, windowH), "Mari0");
 	windowWidth = windowW;
 	windowHeight = windowH;
-	clock;
+	inputManager;
 }
 
-void GameManager::update()
+void GameManager::start()
 {
+	clock;
 
+	// Main loop
 	while (window->isOpen())
 	{
 		deltaTime = clock.restart();
@@ -32,14 +33,17 @@ void GameManager::update()
 		window->clear();
 		window->display();
 
-		for(Entity* entity : entities)
-		{
-			entity->update(deltaTime);
-		}
+		update();
+		draw();
 	}
+}
 
-
-
+void GameManager::update()
+{
+	for (Entity* entity : entities)
+	{
+		entity->update(deltaTime);
+	}
 }
 
 void GameManager::draw()
