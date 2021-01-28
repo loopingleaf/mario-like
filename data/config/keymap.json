@@ -1,0 +1,23 @@
+{
+    "jump": {
+        "keyboard": [
+            "Space",
+            "Up",
+            "Z",
+            "W"
+        ]
+    },
+    "left": {
+        "keyboard": [
+            "Left",
+            "Q",
+            "A"
+        ]
+    },
+    "right": {
+        "keyboard": [
+            "Right",
+            "D"
+        ]
+    }
+}

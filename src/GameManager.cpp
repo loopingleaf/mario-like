@@ -2,18 +2,20 @@
 #include "SFML/Graphics.hpp"
 #include "GameManager.h"
 
-GameManager::GameManager() : window(nullptr)
+GameManager::GameManager()
 {
 	window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Mari0");
 	inputManager;
+	inputManager.loadConfig();
 }
 
-GameManager::GameManager(const int windowW, const int windowH) : window(nullptr)
+GameManager::GameManager(const int windowW, const int windowH)
 {
 	window = new sf::RenderWindow(sf::VideoMode(windowW, windowH), "Mari0");
 	windowWidth = windowW;
 	windowHeight = windowH;
 	inputManager;
+	inputManager.loadConfig();
 }
 
 void GameManager::start()
