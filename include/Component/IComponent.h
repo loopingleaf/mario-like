@@ -8,8 +8,8 @@ class IComponent
 public:
 	Entity* entity;
 	virtual void update(sf::Time deltaTime) = 0;
+	virtual void draw() = 0;
 
 	//TODO Destructor
 	
 };
-
