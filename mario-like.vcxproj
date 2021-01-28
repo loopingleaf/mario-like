@@ -111,7 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\InputManager.cpp" />
-    <ClCompile Include="src\component\Movement.cpp" />
+    <ClCompile Include="src\component\MovementComponent.cpp" />
     <ClCompile Include="src\Ennemy.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\GameManager.cpp" />
@@ -120,15 +120,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\component\IComponent.h" />
-    <ClInclude Include="include\component\Movement.h" />
+    <ClInclude Include="include\component\MovementComponent.h" />
     <ClInclude Include="include\Ennemy.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\GameManager.h" />
     <ClInclude Include="include\InputManager.h" />
+    <ClInclude Include="include\nlohmann\json.hpp" />
     <ClInclude Include="include\Player.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\config\keymap.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
