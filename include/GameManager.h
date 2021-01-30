@@ -32,8 +32,5 @@ public :
 	/**
 	 * \brief Render loop
 	 */
-	void draw();
-
-	
+	void draw();	
 };
-

@@ -1,29 +1,28 @@
 #pragma once
 
 #include <memory>
-#include "Component/IComponent.h"
+#include "Component/Component.h"
 #include "GameManager.h"
 #include "vector"
 
 class GameManager;
-class IComponent;
+class Component;
 
 class Entity
 {
 public:
 	static int endValueIds;
 	
-	std::unique_ptr<GameManager> gm;
-	std::vector<IComponent*> components;
-	int identity;                            // TODO Checker la pertinence de identity
-	float coordinates[2]{ 0.f, 0.f };
+	std::shared_ptr<GameManager> m_gm;
+	std::vector<Component*> m_components;
+	int m_identity;                            // TODO Checker la pertinence de identity
+	float m_coordinates[2]{ 0.f, 0.f };
 	
 	Entity();
-	Entity(GameManager* game_manager);
-	~Entity();
+	Entity(std::shared_ptr<GameManager> game_manager);
+	virtual ~Entity();
 	
 	virtual void update(sf::Time deltaTime);
-	virtual void draw();
-	
+	virtual void draw(sf::Time& deltaTime);
 };
 

@@ -110,6 +110,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Component\Component.cpp" />
+    <ClCompile Include="src\Component\SpriteComponent.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\component\MovementComponent.cpp" />
     <ClCompile Include="src\Ennemy.cpp" />
@@ -119,7 +121,7 @@
     <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\component\IComponent.h" />
+    <ClInclude Include="include\component\Component.h" />
     <ClInclude Include="include\component\MovementComponent.h" />
     <ClInclude Include="include\Ennemy.h" />
     <ClInclude Include="include\Entity.h" />
@@ -127,6 +129,7 @@
     <ClInclude Include="include\InputManager.h" />
     <ClInclude Include="include\nlohmann\json.hpp" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\Component\SpriteComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.md" />

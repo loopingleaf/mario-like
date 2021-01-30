@@ -50,5 +50,8 @@ void GameManager::update()
 
 void GameManager::draw()
 {
-	
+	for (Entity* entity : entities)
+	{
+		entity->draw(deltaTime);
+	}
 }

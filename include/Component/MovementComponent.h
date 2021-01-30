@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 #include "SFML/System/Time.hpp"
 
-class MovementComponent : public IComponent
+class MovementComponent : public Component
 {
 public:
 	enum Direction {
@@ -19,6 +19,7 @@ public:
 	sf::Vector2f direction;
 	bool isGrounded;
 
+	MovementComponent() = default;
 	MovementComponent(Entity* ent, float maxSpeed, float speed, float acceleration, float jumpSpeed, float jumpMaxHeight,
 		bool isSubjectToGravity, sf::Vector2f direction, bool isGrounded);
 

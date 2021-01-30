@@ -31,7 +31,7 @@ void InputManager::loadConfig()
 			if (it2.key() == "keyboard")
 			{
 				inputToAdd.type = InputType::Keyboard;
-				for (int i = 0; i < it2.value().size(); i++)
+				for (unsigned int i = 0; i < it2.value().size(); i++)
 				{
 					std::cout << it2.value()[i];
 					inputToAdd.button = nameKey[it2.value()[i]];
@@ -92,13 +92,13 @@ bool InputManager::isPressed(const std::string name)
 		switch (in.type)
 		{
 		case(InputType::Keyboard):
-			 sf::Keyboard::isKeyPressed(sf::Keyboard::Key(in.button));
-			 break;
+			found = sf::Keyboard::isKeyPressed(sf::Keyboard::Key(in.button));
+			break;
 		case(InputType::Mouse):
-			sf::Mouse::isButtonPressed(sf::Mouse::Button(in.button));
+			found = sf::Mouse::isButtonPressed(sf::Mouse::Button(in.button));
 			break;
 		case(InputType::Joystick):
-			sf::Joystick::isButtonPressed(0, in.button);
+			found = sf::Joystick::isButtonPressed(0, in.button);
 			break;
 		default:
 			break;

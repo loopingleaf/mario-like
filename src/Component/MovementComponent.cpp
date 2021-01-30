@@ -20,8 +20,8 @@ void MovementComponent::update(sf::Time deltaTime)
 	if(speed > 0.0001f )
 	{
 		float shift = speed * deltaTime.asMicroseconds();
-		entity->coordinates[0] = direction.x * shift;
-		entity->coordinates[1] = direction.y * shift;
+		entity->m_coordinates[0] = direction.x * shift;
+		entity->m_coordinates[1] = direction.y * shift;
 	}
 }
 

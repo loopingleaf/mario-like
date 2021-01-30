@@ -3,12 +3,12 @@
 #include "SFML/Graphics.hpp"
 
 class Entity;
-class IComponent
+class Component
 {
 public:
 	Entity* entity;
-	virtual void update(sf::Time deltaTime) = 0;
-	virtual void draw() = 0;
+	virtual void update(sf::Time deltaTime);
+	virtual void draw(sf::Time& deltaTime);
 
 	//TODO Destructor
 	
