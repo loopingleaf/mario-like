@@ -7,6 +7,7 @@ GameManager::GameManager()
 	window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Mari0");
 	inputManager;
 	inputManager.loadConfig();
+	deltaTime = sf::Time();
 }
 
 GameManager::GameManager(const int windowW, const int windowH)
@@ -16,6 +17,7 @@ GameManager::GameManager(const int windowW, const int windowH)
 	windowHeight = windowH;
 	inputManager;
 	inputManager.loadConfig();
+	deltaTime = sf::Time();
 }
 
 void GameManager::start()
@@ -32,11 +34,10 @@ void GameManager::start()
 			if (event.type == sf::Event::Closed)
 				window->close();
 		}
-		window->clear();
-		window->display();
-
 		update();
+		window->clear();
 		draw();
+		window->display();
 	}
 }
 
@@ -44,7 +45,7 @@ void GameManager::update()
 {
 	for (Entity* entity : entities)
 	{
-		entity->update(deltaTime);
+		entity->beforeUpdate(deltaTime);
 	}
 }
 
@@ -52,6 +53,6 @@ void GameManager::draw()
 {
 	for (Entity* entity : entities)
 	{
-		entity->draw(deltaTime);
+		entity->beforeDraw();
 	}
 }

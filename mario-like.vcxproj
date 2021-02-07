@@ -137,6 +137,9 @@
   <ItemGroup>
     <None Include="data\config\keymap.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\textures\player.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -16,13 +16,16 @@ public:
 	std::shared_ptr<GameManager> m_gm;
 	std::vector<Component*> m_components;
 	int m_identity;                            // TODO Checker la pertinence de identity
-	float m_coordinates[2]{ 0.f, 0.f };
+	sf::Vector2f m_coordinates;
 	
 	Entity();
-	Entity(std::shared_ptr<GameManager> game_manager);
+	Entity(std::shared_ptr<GameManager> game_manager, sf::Vector2f coordinates);
 	virtual ~Entity();
 	
 	virtual void update(sf::Time deltaTime);
-	virtual void draw(sf::Time& deltaTime);
+	virtual void draw();
+
+	virtual void beforeUpdate(sf::Time deltaTime) final;
+	virtual void beforeDraw() final;
 };
 

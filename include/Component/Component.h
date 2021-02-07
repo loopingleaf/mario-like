@@ -6,9 +6,12 @@ class Entity;
 class Component
 {
 public:
-	Entity* entity;
+	Entity* m_entity;
+
+	Component() : m_entity(nullptr) {};
+	Component(Entity* entity) : m_entity(entity) {};
 	virtual void update(sf::Time deltaTime);
-	virtual void draw(sf::Time& deltaTime);
+	virtual void draw();
 
 	//TODO Destructor
 	

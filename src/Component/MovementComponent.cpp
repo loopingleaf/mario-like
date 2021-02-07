@@ -3,7 +3,7 @@
 MovementComponent::MovementComponent(Entity* ent, float maxSpeed, float speed, float acceleration, float jumpSpeed, 
 	float jumpMaxHeight, bool isSubjectToGravity, sf::Vector2f direction, bool isGrounded)
 {
-	entity = ent;
+	m_entity = ent;
 	this->maxSpeed = maxSpeed;
 	this->speed = speed;
 	this->acceleration = acceleration;
@@ -20,8 +20,7 @@ void MovementComponent::update(sf::Time deltaTime)
 	if(speed > 0.0001f )
 	{
 		float shift = speed * deltaTime.asMicroseconds();
-		entity->m_coordinates[0] = direction.x * shift;
-		entity->m_coordinates[1] = direction.y * shift;
+		m_entity->m_coordinates.x = direction.x * shift;
+		m_entity->m_coordinates.y = direction.y * shift;
 	}
 }
-

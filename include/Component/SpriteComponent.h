@@ -6,16 +6,16 @@
 class SpriteComponent : public Component
 {
 public:
-	SpriteComponent() = default;
-	SpriteComponent(sf::Texture& texture);
+	SpriteComponent() : m_texture(sf::Texture()), Component() {};
+	SpriteComponent(std::string texturePath, Entity* entity);
 	~SpriteComponent() = default;
 
 	void update(sf::Time deltaTime) override;
-	void draw(sf::Time& deltaTime) override;
+	void draw() override;
 
 private:
 	// TODO: Check if needs to be deleted / released
-	sf::Texture& m_texture;
+	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 };
 
