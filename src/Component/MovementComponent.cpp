@@ -19,8 +19,8 @@ void MovementComponent::update(sf::Time deltaTime)
 	//TODO Saut, gravité...
 	if(speed > 0.0001f )
 	{
-		float shift = speed * deltaTime.asMicroseconds();
-		m_entity->m_coordinates.x = direction.x * shift;
-		m_entity->m_coordinates.y = direction.y * shift;
+		float shift = speed * deltaTime.asSeconds();
+		m_entity->m_coordinates.x += direction.x * shift;
+		m_entity->m_coordinates.y += direction.y * shift;
 	}
 }
