@@ -1,18 +1,18 @@
 #include "Player.h"
-
 #include <iostream>
-
 #include "Component/MovementComponent.h"
 #include "Component/SpriteComponent.h"
 
-Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates)
-	: Entity(gameManager, coordinates)
+Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, const std::string& name)
+	: Entity(gameManager, coordinates, name)
 {
 	m_movementComponent = MovementComponent(this, 20.f, 0.f, 0.f, 10.f, 0.f, 45.f, true, sf::Vector2f(0.f, 0.f), true);
 	m_components.push_back(&m_movementComponent);
 	std::string texturePath = "data/textures/player.png";
 	Component* sprite = new SpriteComponent(texturePath, this);
 	m_components.push_back(sprite);
+	m_collisionBox = CollisionBoxComponent(this, sf::Vector2f(40.f, 50.f));
+	m_components.push_back(&m_collisionBox);
 }
 
 void Player::update(sf::Time deltaTime)
@@ -83,7 +83,4 @@ void Player::update(sf::Time deltaTime)
 		m_movementComponent.speed = 0.f;
 		m_movementComponent.jumpSpeed = 10.f;
 	}
-	
-
-	
 }
