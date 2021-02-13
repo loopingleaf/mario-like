@@ -1,6 +1,6 @@
 #include "Component/MovementComponent.h"
 
-MovementComponent::MovementComponent(Entity* ent, float maxSpeed, float speed, float acceleration, float jumpSpeed, 
+MovementComponent::MovementComponent(Entity* ent, float maxSpeed, float speed, float acceleration, float jumpSpeed, float jumpHeight,
 	float jumpMaxHeight, bool isSubjectToGravity, sf::Vector2f direction, bool isGrounded)
 {
 	m_entity = ent;
@@ -8,6 +8,7 @@ MovementComponent::MovementComponent(Entity* ent, float maxSpeed, float speed, f
 	this->speed = speed;
 	this->acceleration = acceleration;
 	this->jumpSpeed = jumpSpeed;
+	this->jumpHeight = jumpHeight;
 	this->jumpMaxHeight = jumpMaxHeight;
 	this->isSubjectToGravity = isSubjectToGravity;
 	this->direction = direction;
@@ -17,10 +18,11 @@ MovementComponent::MovementComponent(Entity* ent, float maxSpeed, float speed, f
 void MovementComponent::update(sf::Time deltaTime)
 {
 	//TODO Saut, gravité...
-	if(speed > 0.0001f )
-	{
-		float shift = speed * deltaTime.asSeconds();
-		m_entity->m_coordinates.x += direction.x * shift;
-		m_entity->m_coordinates.y += direction.y * shift;
-	}
+	/*if(speed > 0.0001f && jumpSpeed > 0.0001f)
+	{*/
+		float shiftX = speed * deltaTime.asSeconds();
+		m_entity->m_coordinates.x += direction.x * shiftX;
+		float shiftY = jumpSpeed * deltaTime.asSeconds();
+		m_entity->m_coordinates.y += direction.y * shiftY;
+	//}
 }

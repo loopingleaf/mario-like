@@ -104,7 +104,9 @@ bool InputManager::isPressed(const std::string name)
 			break;
 		}
 		if (found)
+		{
 			return true;
+		}	
 	}
 	return false;
 }

@@ -14,13 +14,14 @@ public:
 	float speed;
 	float acceleration;
 	float jumpSpeed;
+	float jumpHeight;
 	float jumpMaxHeight;
 	bool isSubjectToGravity;
 	sf::Vector2f direction;
 	bool isGrounded;
 
 	MovementComponent() = default;
-	MovementComponent(Entity* ent, float maxSpeed, float speed, float acceleration, float jumpSpeed, float jumpMaxHeight,
+	MovementComponent(Entity* ent, float maxSpeed, float speed, float acceleration, float jumpSpeed, float jumpHeight, float jumpMaxHeight,
 		bool isSubjectToGravity, sf::Vector2f direction, bool isGrounded);
 
 	//void walk(Direction direction, sf::Time elapsed);

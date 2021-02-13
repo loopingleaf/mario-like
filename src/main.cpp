@@ -6,6 +6,6 @@
 int main()
 {
 	std::shared_ptr<GameManager> gm = std::make_shared<GameManager>();
-	Entity* player = new Player(gm, sf::Vector2f(20.f, 32.f));
+	Entity* player = new Player(gm, sf::Vector2f(20.f, 432.f));
 	gm->start();
 }
