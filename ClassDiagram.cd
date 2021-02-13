@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
+  <Class Name="Component">
+    <Position X="1.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAABAAAAEAAg=</HashCode>
+      <FileName>include\component\Component.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_entity" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MovementComponent" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="MovementComponent::Direction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>include\component\MovementComponent.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAIQQAAAAAAAAAAAACARQIAAAAAAAEAAA=</HashCode>
+      <FileName>include\component\MovementComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpriteComponent" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAIAAAAgAAAAAAAAABAAAQAEAAA=</HashCode>
+      <FileName>include\Component\SpriteComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity">
+    <Position X="6" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAIAAAAAACCAAAACAABAAIAkAgg=</HashCode>
+      <FileName>include\Entity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="6.25" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAgAgIAAAAAAAAAAQAoAAACAABUAIA=</HashCode>
+      <FileName>include\GameManager.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="inputManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEABA=</HashCode>
+      <FileName>include\Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputManager">
+    <Position X="3.25" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAABAAAAAAAAAAAgEEAAAAAKABAAAA=</HashCode>
+      <FileName>include\InputManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollisionBoxComponent" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAIAAQAABIAAAAAAAAQAAAAECAA=</HashCode>
+      <FileName>include\Component\CollisionBoxComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ground" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>include\Ground.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Input">
+    <Position X="0.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\InputManager.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="type" />
+    </ShowAsAssociation>
+  </Struct>
+  <Enum Name="InputType">
+    <Position X="0.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\InputManager.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
