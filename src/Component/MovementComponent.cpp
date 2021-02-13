@@ -17,7 +17,6 @@ MovementComponent::MovementComponent(Entity* ent, float maxSpeed, float speed, f
 
 void MovementComponent::update(sf::Time deltaTime)
 {
-	//TODO Saut, gravité...
 	/*if(speed > 0.0001f && jumpSpeed > 0.0001f)
 	{*/
 		float shiftX = speed * deltaTime.asSeconds();
