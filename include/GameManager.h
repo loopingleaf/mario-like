@@ -16,7 +16,6 @@ public :
 	std::vector<Entity*> entities;
 	sf::Clock clock;
 	InputManager inputManager;
-
 	GameManager();
 	GameManager(const int windowW, const int windowH);
 	~GameManager() = default;
