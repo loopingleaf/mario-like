@@ -1,22 +1,43 @@
-#include "Player.h"
 #include <iostream>
-#include "Component/MovementComponent.h"
-#include "Component/SpriteComponent.h"
+#include "Player.h"
+#include "Ground.h"
 
-Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, const std::string& name)
-	: Entity(gameManager, coordinates, name)
+const std::string Player::NAME = "player";
+
+Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates)
+	: Entity(gameManager, coordinates)
 {
 	m_movementComponent = MovementComponent(this, 20.f, 0.f, 0.f, 10.f, 0.f, 45.f, true, sf::Vector2f(0.f, 0.f), true);
 	m_components.push_back(&m_movementComponent);
 	std::string texturePath = "data/textures/player.png";
-	Component* sprite = new SpriteComponent(texturePath, this);
-	m_components.push_back(sprite);
-	m_collisionBox = CollisionBoxComponent(this, sf::Vector2f(40.f, 50.f));
-	m_components.push_back(&m_collisionBox);
+	m_sprite = new SpriteComponent(texturePath, this);
+	m_components.push_back(m_sprite);
+	m_collisionBox = new CollisionBoxComponent(this, sf::Vector2f(40.f, 50.f), "playerFeet");
+	m_components.push_back(m_collisionBox);
+}
+
+Player::~Player()
+{
+	delete m_sprite;
+	delete m_collisionBox;
 }
 
 void Player::update(float dt)
 {
+	for (const CollisionBoxComponent* other : m_collisionBox->collisionList())
+	{
+		if (other->m_tag == "ground")
+		{
+			std::cout << other->m_tag << std::endl;
+			m_movementComponent.isGrounded = true;
+		}
+	}
+
+	if (m_movementComponent.isGrounded)
+	{
+		m_movementComponent.direction.y = 0;
+	}
+
 	if (!m_movementComponent.isGrounded)
 	{
 		if (m_movementComponent.jumpSpeed < 12.f)
@@ -30,7 +51,6 @@ void Player::update(float dt)
 	{
 		m_movementComponent.direction.x = 0.f;
 		m_movementComponent.speed = 0.f;
-		m_movementComponent.jumpSpeed = 10.f;
 	}
 
 	if ((!m_gm->inputManager.isPressed("jump") && m_movementComponent.jumpHeight > 0.f) || m_movementComponent.jumpHeight >= m_movementComponent.jumpMaxHeight)
@@ -83,4 +103,9 @@ void Player::update(float dt)
 		m_movementComponent.speed = 0.f;
 		m_movementComponent.jumpSpeed = 10.f;
 	}
+}
+
+std::string Player::getName()
+{
+	return NAME;
 }

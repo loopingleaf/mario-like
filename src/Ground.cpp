@@ -2,8 +2,10 @@
 #include "Ground.h"
 #include "Player.h"
 
-Ground::Ground(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, const std::string& name, std::string texturePath)
-	: Entity(gameManager, coordinates, name)
+const std::string Ground::NAME = "ground";
+
+Ground::Ground(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, std::string texturePath)
+	: Entity(gameManager, coordinates)
 {
 	m_sprite = new SpriteComponent(texturePath, this);
 	m_components.push_back(m_sprite);
@@ -11,12 +13,17 @@ Ground::Ground(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinate
 	sf::Vector2f scale = m_sprite->m_sprite.getScale();
 	v.x *= scale.x;
 	v.y *= scale.y;
-	std::cout << v.x << std::endl;
-	m_collisionBox = CollisionBoxComponent(this, v);
-	m_components.push_back(&m_collisionBox);
+	m_collisionBox = new CollisionBoxComponent(this, v, "ground");
+	m_components.push_back(m_collisionBox);
 }
 
 Ground::~Ground()
 {
+	delete m_collisionBox;
 	delete m_sprite;
+}
+
+std::string Ground::getName()
+{
+	return NAME;
 }

@@ -6,11 +6,14 @@
 class Ground : public Entity
 {
 public:
-	CollisionBoxComponent m_collisionBox;
+	static const std::string NAME;
+	CollisionBoxComponent* m_collisionBox;
 	SpriteComponent* m_sprite;
 
 	Ground() : Entity(), m_sprite(new SpriteComponent()) {};
-	Ground(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, const std::string& name, std::string texturePath);
+	Ground(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, std::string texturePath);
 	~Ground() override;
+
+	std::string getName() override;
 };
 

@@ -1,15 +1,15 @@
 #include <iostream>
 #include "Entity.h"
 
-int Entity::endValueIds = 0;
+const std::string Entity::NAME = "entity";
 
-Entity::Entity(): m_gm(nullptr), m_coordinates(sf::Vector2f(0.f, 0.f)), m_name("")
+Entity::Entity(): m_gm(nullptr), m_coordinates(sf::Vector2f(0.f, 0.f))
 {
 
 }
 
-Entity::Entity(std::shared_ptr<GameManager> game_manager, sf::Vector2f coordinates, const std::string& name)
-	: m_gm(game_manager), m_coordinates(coordinates), m_name(name)
+Entity::Entity(std::shared_ptr<GameManager> game_manager, sf::Vector2f coordinates)
+	: m_gm(game_manager), m_coordinates(coordinates)
 {
 	game_manager->entities.push_back(this);
 }
@@ -33,6 +33,11 @@ void Entity::update(float dt)
 
 void Entity::draw()
 {
+}
+
+std::string Entity::getName()
+{
+	return NAME;
 }
 
 void Entity::beforeDraw()
