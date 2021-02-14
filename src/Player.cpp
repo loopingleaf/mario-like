@@ -14,6 +14,10 @@ Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinate
 	m_components.push_back(m_sprite);
 	m_collisionBox = new CollisionBoxComponent(this, sf::Vector2f(40.f, 50.f), "playerFeet");
 	m_components.push_back(m_collisionBox);
+	// TEST CAMERA
+	view.reset(sf::FloatRect(0, m_coordinates.y - 432, 1280, 720));
+	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
+	m_gm->window->setView(view);
 }
 
 Player::~Player()
@@ -83,7 +87,12 @@ void Player::update(float dt)
 			m_movementComponent.speed += 70.f * dt;
 		}
 		m_movementComponent.direction.x = -1.f * m_movementComponent.speed;
-		std::cout << m_movementComponent.direction.y << std::endl;
+		//std::cout << m_movementComponent.direction.y << std::endl;
+		if (m_coordinates.x < view.getCenter().x - 400)
+		{
+			view.setCenter(m_coordinates.x + 400, view.getCenter().y);
+			m_gm->window->setView(view);
+		}
 	}
 	if (m_gm->inputManager.isPressed("right"))
 	{
@@ -94,7 +103,13 @@ void Player::update(float dt)
 			m_movementComponent.speed += 70.f * dt;
 		}
 		m_movementComponent.direction.x = 1.f * m_movementComponent.speed;
-		std::cout << m_movementComponent.speed << std::endl;
+		//std::cout << m_movementComponent.speed << std::endl;
+		//TEST CAMERA
+		if (m_coordinates.x > view.getCenter().x - 100)
+		{
+			view.setCenter(m_coordinates.x + 100, view.getCenter().y);
+			m_gm->window->setView(view);
+		}
 	}
 
 	if (m_gm->inputManager.isPressed("left") && m_gm->inputManager.isPressed("right"))

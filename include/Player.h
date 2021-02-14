@@ -11,6 +11,8 @@ public:
 	MovementComponent m_movementComponent;
 	CollisionBoxComponent* m_collisionBox;
 	SpriteComponent* m_sprite;
+	//TEST CAMERA
+	sf::View view;
 
 	Player() = default;
 	Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates);

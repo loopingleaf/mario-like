@@ -37,10 +37,10 @@ void GameManager::start()
 				window->close();
 		}
 		accumulator += deltaTime.asSeconds();
-		std::cout << "DT=" << deltaTime.asSeconds() << std::endl;
+		//std::cout << "DT=" << deltaTime.asSeconds() << std::endl;
 		while (accumulator >= fixedDt)
 		{
-			std::cout << "ACC=" << accumulator << std::endl;
+			//std::cout << "ACC=" << accumulator << std::endl;
 			update(fixedDt);
 			accumulator -= fixedDt;
 		}
