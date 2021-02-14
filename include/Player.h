@@ -13,5 +13,5 @@ public:
 	Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, const std::string& name);
 	~Player() = default;
 
-	void update(sf::Time deltaTime) override;
+	void update(float dt) override;
 };

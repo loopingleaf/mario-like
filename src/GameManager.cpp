@@ -23,6 +23,8 @@ GameManager::GameManager(const int windowW, const int windowH)
 void GameManager::start()
 {
 	clock;
+	const float fixedDt = 0.01f;
+	float accumulator = 0.f;
 
 	// Main loop
 	while (window->isOpen())
@@ -34,18 +36,25 @@ void GameManager::start()
 			if (event.type == sf::Event::Closed)
 				window->close();
 		}
-		update();
+		accumulator += deltaTime.asSeconds();
+		std::cout << "DT=" << deltaTime.asSeconds() << std::endl;
+		while (accumulator >= fixedDt)
+		{
+			std::cout << "ACC=" << accumulator << std::endl;
+			update(fixedDt);
+			accumulator -= fixedDt;
+		}
 		window->clear();
 		draw();
 		window->display();
 	}
 }
 
-void GameManager::update()
+void GameManager::update(float dt)
 {
 	for (Entity* entity : entities)
 	{
-		entity->beforeUpdate(deltaTime);
+		entity->beforeUpdate(dt);
 	}
 }
 

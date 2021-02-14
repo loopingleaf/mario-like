@@ -26,5 +26,5 @@ public:
 
 	//void walk(Direction direction, sf::Time elapsed);
 
-	void update(sf::Time deltaTime) override;
+	void update(float dt) override;
 };

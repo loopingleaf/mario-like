@@ -22,9 +22,9 @@ public:
 	Entity(std::shared_ptr<GameManager> game_manager, sf::Vector2f coordinates, const std::string& name);
 	virtual ~Entity();
 	
-	virtual void update(sf::Time deltaTime);
+	virtual void update(float dt);
 	virtual void draw();
 
-	virtual void beforeUpdate(sf::Time deltaTime) final;
+	virtual void beforeUpdate(float dt) final;
 	virtual void beforeDraw() final;
 };

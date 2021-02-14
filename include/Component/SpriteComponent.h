@@ -13,7 +13,7 @@ public:
 	SpriteComponent(std::string texturePath, Entity* entity);
 	~SpriteComponent() = default;
 
-	void update(sf::Time deltaTime) override;
+	void update(float dt) override;
 	void draw() override;	
 };
 

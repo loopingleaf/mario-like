@@ -15,13 +15,13 @@ MovementComponent::MovementComponent(Entity* ent, float maxSpeed, float speed, f
 	this->isGrounded = isGrounded;
 }
 
-void MovementComponent::update(sf::Time deltaTime)
+void MovementComponent::update(float dt)
 {
 	/*if(speed > 0.0001f && jumpSpeed > 0.0001f)
 	{*/
-		float shiftX = speed * deltaTime.asSeconds();
+		float shiftX = speed * dt;
 		m_entity->m_coordinates.x += direction.x * shiftX;
-		float shiftY = jumpSpeed * deltaTime.asSeconds();
+		float shiftY = jumpSpeed * dt;
 		m_entity->m_coordinates.y += direction.y * shiftY;
 	//}
 }

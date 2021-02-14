@@ -16,7 +16,7 @@ public:
 
 	bool checkCollision(const CollisionBoxComponent& other);
 
-	void update(sf::Time deltaTime) override;
+	void update(float dt) override;
 	void draw() override;
 };
 

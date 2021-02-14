@@ -26,9 +26,8 @@ public :
 	/**
 	 * \brief Logic loop
 	 */
-	void update();
+	void update(float dt);
 
-	//TODO Gestion des boucles de draw
 	/**
 	 * \brief Render loop
 	 */

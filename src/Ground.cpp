@@ -20,15 +20,3 @@ Ground::~Ground()
 {
 	delete m_sprite;
 }
-
-void Ground::update(sf::Time deltaTime)
-{
-	for (const CollisionBoxComponent* cb : CollisionBoxComponent::all)
-	{
-		if (cb->m_entity->m_name == "Player")
-		{
-			// TODO: Player.isgrounded = true;
-		}
-	}
-}
-

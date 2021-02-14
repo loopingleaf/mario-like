@@ -15,13 +15,13 @@ Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinate
 	m_components.push_back(&m_collisionBox);
 }
 
-void Player::update(sf::Time deltaTime)
+void Player::update(float dt)
 {
 	if (!m_movementComponent.isGrounded)
 	{
 		if (m_movementComponent.jumpSpeed < 12.f)
 		{
-			m_movementComponent.jumpSpeed = m_movementComponent.jumpSpeed * 1.004f;
+			m_movementComponent.jumpSpeed *= 1.004f;
 		}
 		m_movementComponent.direction.y = 10.f * m_movementComponent.jumpSpeed;
 	}
@@ -35,10 +35,10 @@ void Player::update(sf::Time deltaTime)
 
 	if ((!m_gm->inputManager.isPressed("jump") && m_movementComponent.jumpHeight > 0.f) || m_movementComponent.jumpHeight >= m_movementComponent.jumpMaxHeight)
 	{
-		m_movementComponent.jumpHeight -= 0.1f;
+		m_movementComponent.jumpHeight -= 130.f * dt;
 		if (m_movementComponent.jumpSpeed < 12.f)
 		{
-			m_movementComponent.jumpSpeed = m_movementComponent.jumpSpeed * 1.004f;
+			m_movementComponent.jumpSpeed *= 1.004f;
 		}
 		m_movementComponent.direction.y = 10.f * m_movementComponent.jumpSpeed;
 		m_movementComponent.isGrounded = false;
@@ -46,10 +46,10 @@ void Player::update(sf::Time deltaTime)
 
 	if (m_gm->inputManager.isPressed(("jump")) && m_movementComponent.isGrounded && m_movementComponent.jumpHeight < m_movementComponent.jumpMaxHeight)
 	{
-		m_movementComponent.jumpHeight += 0.1f;
+		m_movementComponent.jumpHeight += 130.f * dt;
 		if (m_movementComponent.jumpSpeed < 12.f)
 		{
-			m_movementComponent.jumpSpeed = m_movementComponent.jumpSpeed * 0.997f;
+			m_movementComponent.jumpSpeed *= 0.997f;
 		}
 		m_movementComponent.direction.y = -10.f * m_movementComponent.jumpSpeed;
 	}
@@ -60,7 +60,7 @@ void Player::update(sf::Time deltaTime)
 			m_movementComponent.speed = 3.f;
 		if (m_movementComponent.speed < m_movementComponent.maxSpeed)
 		{
-			m_movementComponent.speed = m_movementComponent.speed * 1.004f;
+			m_movementComponent.speed += 70.f * dt;
 		}
 		m_movementComponent.direction.x = -1.f * m_movementComponent.speed;
 		std::cout << m_movementComponent.direction.y << std::endl;
@@ -71,7 +71,7 @@ void Player::update(sf::Time deltaTime)
 			m_movementComponent.speed = 3.f;
 		if (m_movementComponent.speed < m_movementComponent.maxSpeed)
 		{
-			m_movementComponent.speed = m_movementComponent.speed * 1.004f;
+			m_movementComponent.speed += 70.f * dt;
 		}
 		m_movementComponent.direction.x = 1.f * m_movementComponent.speed;
 		std::cout << m_movementComponent.speed << std::endl;

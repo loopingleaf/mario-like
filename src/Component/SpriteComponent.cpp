@@ -11,7 +11,7 @@ SpriteComponent::SpriteComponent(std::string texturePath, Entity* entity)
 	m_sprite.setScale(5.f, 5.f);
 }
 
-void SpriteComponent::update(sf::Time deltaTime)
+void SpriteComponent::update(float dt)
 {
 	m_sprite.setPosition(m_entity->m_coordinates);
 }

@@ -12,7 +12,5 @@ public:
 	Ground() : Entity(), m_sprite(new SpriteComponent()) {};
 	Ground(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, const std::string& name, std::string texturePath);
 	~Ground() override;
-
-	void update(sf::Time deltaTime) override;
 };
 

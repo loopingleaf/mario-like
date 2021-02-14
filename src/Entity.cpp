@@ -27,7 +27,7 @@ Entity::~Entity()
 	}*/
 }
 
-void Entity::update(sf::Time deltaTime)
+void Entity::update(float dt)
 {
 }
 
@@ -48,15 +48,15 @@ void Entity::beforeDraw()
 	}
 }
 
-void Entity::beforeUpdate(sf::Time deltaTime)
+void Entity::beforeUpdate(float dt)
 {
-	this->update(deltaTime);
+	this->update(dt);
 
 	if (m_components.size() == 0)
 		return;
 
 	for (Component* comp : m_components)
 	{
-		comp->update(deltaTime);
+		comp->update(dt);
 	}
 }

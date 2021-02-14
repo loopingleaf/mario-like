@@ -11,9 +11,6 @@ public:
 	Component() : m_entity(nullptr) {};
 	Component(Entity* entity) : m_entity(entity) {};
 
-	virtual void update(sf::Time deltaTime);
+	virtual void update(float dt);
 	virtual void draw();
-
-	//TODO Destructor
-	
 };

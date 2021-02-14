@@ -28,7 +28,7 @@ bool CollisionBoxComponent::checkCollision(const CollisionBoxComponent& other)
 	return m_rect.intersects(other.m_rect);
 }
 
-void CollisionBoxComponent::update(sf::Time deltaTime)
+void CollisionBoxComponent::update(float dt)
 {
 	m_rect.top = m_entity->m_coordinates.x + m_relativePosition.x;
 	m_rect.left = m_entity->m_coordinates.y + m_relativePosition.y;
