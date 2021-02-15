@@ -17,11 +17,8 @@ MovementComponent::MovementComponent(Entity* ent, float maxSpeed, float speed, f
 
 void MovementComponent::update(float dt)
 {
-	/*if(speed > 0.0001f && jumpSpeed > 0.0001f)
-	{*/
-		float shiftX = speed * dt;
-		m_entity->m_coordinates.x += direction.x * shiftX;
-		float shiftY = jumpSpeed * dt;
-		m_entity->m_coordinates.y += direction.y * shiftY;
-	//}
+	float shiftX = speed * dt;
+	m_entity->m_coordinates.x += direction.x * shiftX;
+	float shiftY = jumpSpeed * dt;
+	m_entity->m_coordinates.y += direction.y * shiftY;
 }
