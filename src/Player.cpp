@@ -32,7 +32,6 @@ void Player::update(float dt)
 	{
 		if (other->m_tag == "ground")
 		{
-			std::cout << other->m_tag << std::endl;
 			m_movementComponent.isGrounded = true;
 		}
 	}
