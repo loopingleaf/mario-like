@@ -16,4 +16,5 @@ public:
 	Ennemy(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates);
 	~Ennemy();
 
+	//void die();
 };

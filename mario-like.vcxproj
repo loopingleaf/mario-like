@@ -141,8 +141,10 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="data\config\keymap.json" />
+    <None Include="data\config\level.json" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="data\textures\ground.png" />
     <Image Include="data\textures\player.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

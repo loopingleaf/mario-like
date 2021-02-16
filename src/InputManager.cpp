@@ -19,19 +19,19 @@ void InputManager::loadConfig()
 	std::ifstream file(keymapPath);
 	nlohmann::json json;
 	file >> json;
-	for (auto it = json.begin(); it != json.end(); it++)
+	for (auto it = json.begin(); it != json.end(); ++it)
 	{
 #ifdef _DEBUG
 		std::cout << it.key() << "; ";
 #endif // _DEBUG
 		std::string newBindingName = it.key();
-		for (auto it2 = it.value().begin(); it2 != it.value().end(); it2++)
+		for (auto it2 = it.value().begin(); it2 != it.value().end(); ++it2)
 		{
 			Input inputToAdd;
 			if (it2.key() == "keyboard")
 			{
 				inputToAdd.type = InputType::Keyboard;
-				for (unsigned int i = 0; i < it2.value().size(); i++)
+				for (unsigned int i = 0; i < it2.value().size(); ++i)
 				{
 					std::cout << it2.value()[i];
 					inputToAdd.button = nameKey[it2.value()[i]];

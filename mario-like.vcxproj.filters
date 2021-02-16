@@ -102,9 +102,13 @@
   <ItemGroup>
     <None Include="data\config\keymap.json" />
     <None Include="ClassDiagram.cd" />
+    <None Include="data\config\level.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="data\textures\player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="data\textures\ground.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

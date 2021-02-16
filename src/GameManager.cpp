@@ -1,6 +1,11 @@
 #include <iostream>
+#include <fstream>
 #include "SFML/Graphics.hpp"
 #include "GameManager.h"
+#include "nlohmann/json.hpp"
+#include "Ground.h"
+
+const std::string GameManager::LEVEL_FILEPATH = "data/config/level.json";
 
 GameManager::GameManager()
 {
@@ -20,8 +25,23 @@ GameManager::GameManager(const int windowW, const int windowH)
 	deltaTime = sf::Time();
 }
 
-void GameManager::start()
+GameManager::GameManager(const GameManager& gm)
+	: window(gm.window), windowWidth(gm.windowWidth), windowHeight(gm.windowHeight),
+	inputManager(gm.inputManager), deltaTime(gm.deltaTime)
 {
+}
+
+GameManager::~GameManager()
+{
+	for (Entity* entity : m_level)
+	{
+		delete entity;
+	}
+}
+
+void GameManager::start(std::shared_ptr<GameManager> gm)
+{
+	generateLevel(gm);
 	clock;
 	const float fixedDt = 0.01f;
 	float accumulator = 0.f;
@@ -47,6 +67,39 @@ void GameManager::start()
 		window->clear();
 		draw();
 		window->display();
+	}
+}
+
+GameManager& GameManager::operator=(const GameManager& gm)
+{
+	window = gm.window;
+	windowWidth = gm.windowWidth;
+	windowHeight = gm.windowHeight;
+	inputManager = gm.inputManager;
+	deltaTime = gm.deltaTime;
+	return *this;
+}
+
+void GameManager::generateLevel(std::shared_ptr<GameManager> gm)
+{
+	std::ifstream file(LEVEL_FILEPATH);
+	nlohmann::json json;
+	file >> json;
+	for (auto it = json.begin(); it != json.end(); ++it)
+	{
+		std::cout << it.key() << std::endl;
+		if (it.key() == "level")
+		{
+			for (auto it2 = it.value().begin(); it2 != it.value().end(); ++it2)
+			{
+				Entity* newGround = new Ground(gm, sf::Vector2f(it2.value()[0], it2.value()[1]), "data/textures/ground.png");
+				m_level.push_back(newGround);
+			}
+		}
+		/*else if (it.key() == "enemy")
+		{
+
+		}*/
 	}
 }
 

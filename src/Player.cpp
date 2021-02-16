@@ -28,12 +28,18 @@ Player::~Player()
 
 void Player::update(float dt)
 {
+	bool isCollidingGround = false;
 	for (const CollisionBoxComponent* other : m_collisionBox->collisionList())
 	{
 		if (other->m_tag == "ground")
 		{
 			m_movementComponent.isGrounded = true;
+			isCollidingGround = true;
 		}
+	}
+	if (!isCollidingGround)
+	{
+		m_movementComponent.isGrounded = false;
 	}
 
 	if (m_movementComponent.isGrounded)
