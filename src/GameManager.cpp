@@ -87,7 +87,6 @@ void GameManager::generateLevel(std::shared_ptr<GameManager> gm)
 	file >> json;
 	for (auto it = json.begin(); it != json.end(); ++it)
 	{
-		std::cout << it.key() << std::endl;
 		if (it.key() == "level")
 		{
 			for (auto it2 = it.value().begin(); it2 != it.value().end(); ++it2)
