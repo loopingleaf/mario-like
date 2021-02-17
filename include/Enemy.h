@@ -4,7 +4,7 @@
 #include "Component/SpriteComponent.h"
 #include "Component/MovementComponent.h"
 
-class Ennemy : public Entity
+class Enemy : public Entity
 {
 public:
 	CollisionBoxComponent* m_hitBox;
@@ -12,9 +12,11 @@ public:
 	SpriteComponent* m_sprite;
 	MovementComponent* m_movement;
 
-	Ennemy();
-	Ennemy(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates);
-	~Ennemy();
+	Enemy();
+	Enemy(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, std::string texturePath);
+	Enemy(const Enemy& en);
+	~Enemy();
+	Enemy& operator=(const Enemy& en);
 
 	//void die();
 };
