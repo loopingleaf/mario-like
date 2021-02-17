@@ -39,6 +39,16 @@ GameManager::~GameManager()
 	}
 }
 
+GameManager& GameManager::operator=(const GameManager& gm)
+{
+	window = gm.window;
+	windowWidth = gm.windowWidth;
+	windowHeight = gm.windowHeight;
+	inputManager = gm.inputManager;
+	deltaTime = gm.deltaTime;
+	return *this;
+}
+
 void GameManager::start(std::shared_ptr<GameManager> gm)
 {
 	generateLevel(gm);
@@ -68,16 +78,6 @@ void GameManager::start(std::shared_ptr<GameManager> gm)
 		draw();
 		window->display();
 	}
-}
-
-GameManager& GameManager::operator=(const GameManager& gm)
-{
-	window = gm.window;
-	windowWidth = gm.windowWidth;
-	windowHeight = gm.windowHeight;
-	inputManager = gm.inputManager;
-	deltaTime = gm.deltaTime;
-	return *this;
 }
 
 void GameManager::generateLevel(std::shared_ptr<GameManager> gm)

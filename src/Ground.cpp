@@ -4,6 +4,11 @@
 
 const std::string Ground::NAME = "ground";
 
+Ground::Ground()
+	: Entity(), m_sprite(nullptr), m_collisionBox(nullptr)
+{
+}
+
 Ground::Ground(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, std::string texturePath)
 	: Entity(gameManager, coordinates)
 {

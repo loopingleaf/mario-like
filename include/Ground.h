@@ -10,7 +10,7 @@ public:
 	CollisionBoxComponent* m_collisionBox;
 	SpriteComponent* m_sprite;
 
-	Ground() : Entity(), m_sprite(new SpriteComponent()) {};
+	Ground();
 	Ground(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates, std::string texturePath);
 	~Ground() override;
 
