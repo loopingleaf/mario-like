@@ -96,6 +96,7 @@ void Player::update(float dt)
 		if (m_coordinates.x < view.getCenter().x - 400)
 		{
 			view.setCenter(m_coordinates.x + 400, view.getCenter().y);
+			m_gm->background.setPosition(m_gm->background.getPosition().x - 3, m_gm->background.getPosition().y);
 			m_gm->window->setView(view);
 		}
 	}
@@ -113,6 +114,7 @@ void Player::update(float dt)
 		if (m_coordinates.x > view.getCenter().x - 100)
 		{
 			view.setCenter(m_coordinates.x + 100, view.getCenter().y);
+			m_gm->background.setPosition(m_gm->background.getPosition().x + 3, m_gm->background.getPosition().y);
 			m_gm->window->setView(view);
 		}
 	}
