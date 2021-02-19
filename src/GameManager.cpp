@@ -13,6 +13,10 @@ GameManager::GameManager()
 	inputManager;
 	inputManager.loadConfig();
 	deltaTime = sf::Time();
+	backgroundTexture.loadFromFile("data/textures/bgSky.png");
+	background.setTexture(backgroundTexture);
+	background.setScale(3.f,1.f);
+	background.setPosition(-300.f, -1152.f / 2);
 }
 
 GameManager::GameManager(const int windowW, const int windowH)
@@ -23,6 +27,9 @@ GameManager::GameManager(const int windowW, const int windowH)
 	inputManager;
 	inputManager.loadConfig();
 	deltaTime = sf::Time();
+	backgroundTexture.loadFromFile("data/textures/bgSky.png");
+	background.setTexture(backgroundTexture);
+	background.setScale(2.f, 1.f);
 }
 
 GameManager::GameManager(const GameManager& gm)
@@ -112,8 +119,10 @@ void GameManager::update(float dt)
 
 void GameManager::draw()
 {
+	window->draw(background);
 	for (Entity* entity : entities)
 	{
 		entity->drawAll();
 	}
+	
 }

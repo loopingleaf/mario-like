@@ -17,6 +17,8 @@ public :
 	std::vector<Entity*> entities;
 	sf::Clock clock;
 	InputManager inputManager;
+	sf::Texture backgroundTexture;
+	sf::Sprite background;
 
 	GameManager();
 	GameManager(const int windowW, const int windowH);
