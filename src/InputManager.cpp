@@ -33,7 +33,9 @@ void InputManager::loadConfig()
 				inputToAdd.type = InputType::Keyboard;
 				for (unsigned int i = 0; i < it2.value().size(); ++i)
 				{
+#ifdef _DEBUG
 					std::cout << it2.value()[i];
+#endif // _DEBUG
 					inputToAdd.button = nameKey[it2.value()[i]];
 					addBinding(it.key(), inputToAdd);
 				}

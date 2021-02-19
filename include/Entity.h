@@ -25,7 +25,7 @@ public:
 	virtual void draw();
 	virtual std::string getName();
 
-	virtual void beforeUpdate(float dt) final;
-	virtual void beforeDraw() final;
+	virtual void updateAll(float dt) final;
+	virtual void drawAll() final;
 private:
 };

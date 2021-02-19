@@ -12,8 +12,8 @@ Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinate
 	std::string texturePath = "data/textures/player.png";
 	m_sprite = new SpriteComponent(texturePath, this);
 	m_components.push_back(m_sprite);
-	m_collisionBox = new CollisionBoxComponent(this, sf::Vector2f(40.f, 50.f), "playerFeet");
-	m_components.push_back(m_collisionBox);
+	m_collisionFeet = new CollisionBoxComponent(this, sf::Vector2f(40.f, 50.f), "playerFeet");
+	m_components.push_back(m_collisionFeet);
 	// TEST CAMERA
 	view.reset(sf::FloatRect(0, m_coordinates.y - 432, 1280, 720));
 	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
@@ -24,13 +24,13 @@ Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinate
 Player::~Player()
 {
 	delete m_sprite;
-	delete m_collisionBox;
+	delete m_collisionFeet;
 }
 
 void Player::update(float dt)
 {
 	bool isCollidingGround = false;
-	for (const CollisionBoxComponent* other : m_collisionBox->collisionList())
+	for (const CollisionBoxComponent* other : m_collisionFeet->collisionList())
 	{
 		if (other->m_tag == "ground")
 		{
@@ -38,6 +38,10 @@ void Player::update(float dt)
 			isCollidingGround = true;
 		}
 	}
+	/*for (const CollisionBoxComponent* other : m_hitBox->collisionList())
+	{
+		//if(other->m_tag == "")
+	}*/
 	if (!isCollidingGround)
 	{
 		m_movementComponent.isGrounded = false;

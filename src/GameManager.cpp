@@ -119,7 +119,7 @@ void GameManager::update(float dt)
 {
 	for (Entity* entity : entities)
 	{
-		entity->beforeUpdate(dt);
+		entity->updateAll(dt);
 	}
 }
 
@@ -130,7 +130,7 @@ void GameManager::draw()
 	// scoreText.setPosition(window->getView().getCenter().x - 550, window->getView().getCenter().y - 320);
 	for (Entity* entity : entities)
 	{
-		entity->beforeDraw();
+		entity->drawAll();
 	}
 	
 }
