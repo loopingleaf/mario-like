@@ -13,10 +13,16 @@ GameManager::GameManager()
 	inputManager;
 	inputManager.loadConfig();
 	deltaTime = sf::Time();
+	font.loadFromFile("data/fonts/Minecraft.ttf");
+	scoreText.setFont(font);
 	backgroundTexture.loadFromFile("data/textures/bgSky.png");
 	background.setTexture(backgroundTexture);
 	background.setScale(3.f,1.f);
 	background.setPosition(-300.f, -1152.f / 2);
+	scoreText.setString("score : 000");
+	scoreText.setCharacterSize(24);
+	scoreText.setColor(sf::Color::Black);
+	window->draw(scoreText);
 }
 
 GameManager::GameManager(const int windowW, const int windowH)
@@ -120,6 +126,8 @@ void GameManager::update(float dt)
 void GameManager::draw()
 {
 	window->draw(background);
+	window->draw(scoreText);
+	// scoreText.setPosition(window->getView().getCenter().x - 550, window->getView().getCenter().y - 320);
 	for (Entity* entity : entities)
 	{
 		entity->beforeDraw();

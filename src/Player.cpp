@@ -18,6 +18,7 @@ Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinate
 	view.reset(sf::FloatRect(0, m_coordinates.y - 432, 1280, 720));
 	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
 	m_gm->window->setView(view);
+	m_gm->scoreText.setPosition(view.getCenter().x - 580, view.getCenter().y - 330);
 }
 
 Player::~Player()
@@ -96,7 +97,8 @@ void Player::update(float dt)
 		if (m_coordinates.x < view.getCenter().x - 400)
 		{
 			view.setCenter(m_coordinates.x + 400, view.getCenter().y);
-			m_gm->background.setPosition(m_gm->background.getPosition().x - 3, m_gm->background.getPosition().y);
+			m_gm->scoreText.setPosition(view.getCenter().x - 580, view.getCenter().y - 330);
+			m_gm->background.setPosition(m_gm->background.getPosition().x - 3 * m_movementComponent.speed / m_movementComponent.maxSpeed, m_gm->background.getPosition().y);
 			m_gm->window->setView(view);
 		}
 	}
@@ -114,7 +116,8 @@ void Player::update(float dt)
 		if (m_coordinates.x > view.getCenter().x - 100)
 		{
 			view.setCenter(m_coordinates.x + 100, view.getCenter().y);
-			m_gm->background.setPosition(m_gm->background.getPosition().x + 3, m_gm->background.getPosition().y);
+			m_gm->scoreText.setPosition(view.getCenter().x - 580, view.getCenter().y - 330);
+			m_gm->background.setPosition(m_gm->background.getPosition().x + 3 * m_movementComponent.speed / m_movementComponent.maxSpeed, m_gm->background.getPosition().y);
 			m_gm->window->setView(view);
 		}
 	}
