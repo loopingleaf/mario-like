@@ -106,7 +106,7 @@ void GameManager::update(float dt)
 {
 	for (Entity* entity : entities)
 	{
-		entity->beforeUpdate(dt);
+		entity->updateAll(dt);
 	}
 }
 
@@ -114,6 +114,6 @@ void GameManager::draw()
 {
 	for (Entity* entity : entities)
 	{
-		entity->beforeDraw();
+		entity->drawAll();
 	}
 }

@@ -21,10 +21,6 @@ Entity::~Entity()
 	{
 		m_gm->entities.erase(iterator);
 	}
-	/*for (auto c : m_components)
-	{
-		delete c;
-	}*/
 }
 
 void Entity::update(float dt)
@@ -40,10 +36,8 @@ std::string Entity::getName()
 	return NAME;
 }
 
-void Entity::beforeDraw()
+void Entity::drawAll()
 {
-	this->draw();
-
 	if (m_components.size() == 0)
 		return;
 
@@ -51,12 +45,12 @@ void Entity::beforeDraw()
 	{
 		comp->draw();
 	}
+
+	this->draw();
 }
 
-void Entity::beforeUpdate(float dt)
+void Entity::updateAll(float dt)
 {
-	this->update(dt);
-
 	if (m_components.size() == 0)
 		return;
 
@@ -64,4 +58,6 @@ void Entity::beforeUpdate(float dt)
 	{
 		comp->update(dt);
 	}
+
+	this->update(dt);
 }
