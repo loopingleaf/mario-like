@@ -111,5 +111,11 @@
     <Image Include="data\textures\ground.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="data\textures\enemy.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="data\textures\bgSky.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

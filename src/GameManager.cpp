@@ -4,6 +4,7 @@
 #include "GameManager.h"
 #include "nlohmann/json.hpp"
 #include "Ground.h"
+#include "Enemy.h"
 
 const std::string GameManager::LEVEL_FILEPATH = "data/config/level.json";
 
@@ -112,10 +113,14 @@ void GameManager::generateLevel(std::shared_ptr<GameManager> gm)
 				m_level.push_back(newGround);
 			}
 		}
-		/*else if (it.key() == "enemy")
+		else if (it.key() == "enemies")
 		{
-
-		}*/
+			for (auto it2 = it.value().begin(); it2 != it.value().end(); ++it2)
+			{
+				Entity* newEnemy = new Enemy(gm, sf::Vector2f(it2.value()[0], it2.value()[1]), "data/textures/enemy.png");
+				m_level.push_back(newEnemy);
+			}
+		}
 	}
 }
 

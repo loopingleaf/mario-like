@@ -144,6 +144,8 @@
     <None Include="data\config\level.json" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="data\textures\bgSky.png" />
+    <Image Include="data\textures\enemy.png" />
     <Image Include="data\textures\ground.png" />
     <Image Include="data\textures\player.png" />
   </ItemGroup>
