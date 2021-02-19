@@ -13,6 +13,10 @@ GameManager::GameManager()
 	inputManager;
 	inputManager.loadConfig();
 	deltaTime = sf::Time();
+	music.openFromFile("data/sounds/8BitSurf.wav");
+	music.play();
+	buffer.loadFromFile("data/sounds/killEnemy.wav");
+	killSound.setBuffer(buffer);
 	font.loadFromFile("data/fonts/Minecraft.ttf");
 	scoreText.setFont(font);
 	backgroundTexture.loadFromFile("data/textures/bgSky.png");

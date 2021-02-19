@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "SFML/Graphics.hpp"
+#include <SFML/Audio.hpp>
 #include "Entity.h"
 #include "InputManager.h"
 
@@ -17,6 +18,9 @@ public :
 	std::vector<Entity*> entities;
 	sf::Clock clock;
 	InputManager inputManager;
+	sf::Music music;
+	sf::SoundBuffer buffer;
+	sf::Sound killSound;
 	int score = 0;
 	sf::View hud;
 	sf::Font font;
