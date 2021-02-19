@@ -29,22 +29,35 @@ Player::~Player()
 void Player::update(float dt)
 {
 	bool isCollidingGround = false;
-	for (const CollisionBoxComponent* other : m_collisionFeet->collisionList())
+	std::vector<const CollisionBoxComponent*> retval;
+	for (const CollisionBoxComponent* cb : CollisionBoxComponent::all)
 	{
-		if (other->m_tag == "ground")
+		if (cb == m_collisionFeet || cb->m_entity == this)
+			continue;
+
+		if (m_collisionFeet->checkCollision(*cb))
 		{
-			m_movementComponent.isGrounded = true;
-			isCollidingGround = true;
+			if (cb->m_tag == "ground")
+			{
+				m_movementComponent.isGrounded = true;
+				isCollidingGround = true;
+				
+				// Not that clean, but that's all I can code for now.
+				Ground* collidingGround = static_cast<Ground*>(cb->m_entity);
+				m_coordinates.y = collidingGround->m_coordinates.y - (static_cast<float>(collidingGround->m_sprite->m_texture.getSize().y) * collidingGround->m_sprite->m_sprite.getScale().y) / 2.f
+					- (static_cast<float>(m_sprite->m_texture.getSize().y) * m_sprite->m_sprite.getScale().y) / 2.f;
+			}
 		}
 	}
+	
 	/*for (const CollisionBoxComponent* other : m_hitBox->collisionList())
 	{
 		//if(other->m_tag == "")
 	}*/
-	if (!isCollidingGround)
+	/*if (!isCollidingGround)
 	{
 		m_movementComponent.isGrounded = false;
-	}
+	}*/
 
 	if (m_movementComponent.isGrounded)
 	{
