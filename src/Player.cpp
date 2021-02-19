@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Player.h"
 #include "Ground.h"
+#include "Enemy.h"
 
 const std::string Player::NAME = "player";
 
@@ -17,8 +18,7 @@ Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinate
 	spriteSize.x *= scale.x;
 	spriteSize.y *= scale.y;
 	
-	
-	m_collisionFeet = new CollisionBoxComponent(this, sf::Vector2f(spriteSize.x, 4.f), "playerFeet", sf::Vector2f(0.f, spriteSize.y - 4.f));
+	m_collisionFeet = new CollisionBoxComponent(this, spriteSize, "playerFeet");
 	m_components.push_back(m_collisionFeet);
 	// TEST CAMERA
 	view.reset(sf::FloatRect(0, m_coordinates.y - 432, 1280, 720));
@@ -32,6 +32,16 @@ Player::~Player()
 	delete m_sprite;
 	delete m_collisionFeet;
 }
+
+void Player::die()
+{
+	const auto iterator = std::find(m_gm->entities.begin(), m_gm->entities.end(), this);
+	if (iterator != m_gm->entities.end())
+	{
+		m_gm->entities.erase(iterator);
+	}
+}
+
 
 void Player::update(float dt)
 {
@@ -54,6 +64,15 @@ void Player::update(float dt)
 				m_coordinates.y = collidingGround->m_coordinates.y - (static_cast<float>(collidingGround->m_sprite->m_texture.getSize().y) * collidingGround->m_sprite->m_sprite.getScale().y) / 2.f
 					- (static_cast<float>(m_sprite->m_texture.getSize().y) * m_sprite->m_sprite.getScale().y) / 4.f + 2.f;
 			}
+			else if (cb->m_tag == "hit")
+			{
+				Enemy* enemy = static_cast<Enemy*>(cb->m_entity);
+				enemy->die();
+			}
+			/*else if(cb->m_tag == "damage")
+			{
+				die();
+			}*/
 		}
 	}
 	/*if (!isCollidingGround)

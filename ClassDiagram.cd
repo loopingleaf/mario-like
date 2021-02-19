@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
   <Class Name="Component">
-    <Position X="1.75" Y="1" Width="1.5" />
+    <Position X="1.75" Y="1" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAABAAAAEAAg=</HashCode>
       <FileName>include\component\Component.h</FileName>
@@ -12,15 +12,8 @@
   </Class>
   <Class Name="MovementComponent" Collapsed="true">
     <Position X="4" Y="3.25" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="MovementComponent::Direction" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>include\component\MovementComponent.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAIQQAAAAAAAAAAAACARQIAAAAAAAEAAA=</HashCode>
+      <HashCode>AAAACAAACAAAAQQAAAAAIAAAAAICAQYAAAAAAAAEAAA=</HashCode>
       <FileName>include\component\MovementComponent.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -32,16 +25,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entity">
-    <Position X="6" Y="1" Width="1.5" />
+    <Position X="6" Y="1" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAIAAAAAACCAAAACAABAAIAkAgg=</HashCode>
+      <HashCode>EAAAAAAAAAAAAAAAAAIAAAAAACCAAAACAABEAIAEAEg=</HashCode>
       <FileName>include\Entity.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameManager">
-    <Position X="6.25" Y="6.25" Width="1.75" />
+    <Position X="7.25" Y="6.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAAAAgAgIAAAAAAAAAAQAoAAACAABUAIA=</HashCode>
+      <HashCode>AAIAAAgAAIEBAQAgAgIIAAAQAAAAARAoABBiAAhUIIA=</HashCode>
       <FileName>include\GameManager.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -51,12 +44,12 @@
   <Class Name="Player" Collapsed="true">
     <Position X="5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEABA=</HashCode>
+      <HashCode>AAAAEAAgACAAAAAAAAAAAAAgAAAAAAAAAQAEAQAEAFA=</HashCode>
       <FileName>include\Player.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="InputManager">
-    <Position X="3.25" Y="6.25" Width="1.75" />
+    <Position X="3" Y="6.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAgAAAAABAAAAAAAAAAAgEEAAAAAKABAAAA=</HashCode>
       <FileName>include\InputManager.h</FileName>
@@ -65,15 +58,22 @@
   <Class Name="CollisionBoxComponent" Collapsed="true">
     <Position X="2.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAAAAAAAAAAIAAQAABIAAAAAAAAQAAAAECAA=</HashCode>
+      <HashCode>AAAAAAQAAAAAAAAAAAIAAQAAAIBAAAAAAAQAAACEGAA=</HashCode>
       <FileName>include\Component\CollisionBoxComponent.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ground" Collapsed="true">
     <Position X="6.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAAAAEAAAAEGA=</HashCode>
       <FileName>include\Ground.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy" Collapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAgAAADAAAAgAAAAAAAAgAAAAAAAAAAAgAAAEAAA=</HashCode>
+      <FileName>include\Enemy.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="Input">
