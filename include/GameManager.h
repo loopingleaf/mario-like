@@ -17,6 +17,10 @@ public :
 	std::vector<Entity*> entities;
 	sf::Clock clock;
 	InputManager inputManager;
+	int score = 0;
+	sf::View hud;
+	sf::Font font;
+	sf::Text scoreText;
 	sf::Texture backgroundTexture;
 	sf::Sprite background;
 
