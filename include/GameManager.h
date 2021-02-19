@@ -23,6 +23,7 @@ public :
 	sf::Text scoreText;
 	sf::Texture backgroundTexture;
 	sf::Sprite background;
+	int m_score = 0;
 
 	GameManager();
 	GameManager(const int windowW, const int windowH);

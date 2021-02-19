@@ -12,7 +12,13 @@ Player::Player(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinate
 	std::string texturePath = "data/textures/player.png";
 	m_sprite = new SpriteComponent(texturePath, this);
 	m_components.push_back(m_sprite);
-	m_collisionFeet = new CollisionBoxComponent(this, sf::Vector2f(40.f, 50.f), "playerFeet");
+	sf::Vector2f spriteSize = (sf::Vector2f) m_sprite->m_sprite.getTexture()->getSize();
+	sf::Vector2f scale = m_sprite->m_sprite.getScale();
+	spriteSize.x *= scale.x;
+	spriteSize.y *= scale.y;
+	
+	
+	m_collisionFeet = new CollisionBoxComponent(this, sf::Vector2f(spriteSize.x, 4.f), "playerFeet", sf::Vector2f(0.f, spriteSize.y - 4.f));
 	m_components.push_back(m_collisionFeet);
 	// TEST CAMERA
 	view.reset(sf::FloatRect(0, m_coordinates.y - 432, 1280, 720));
@@ -46,15 +52,10 @@ void Player::update(float dt)
 				// Not that clean, but that's all I can code for now.
 				Ground* collidingGround = static_cast<Ground*>(cb->m_entity);
 				m_coordinates.y = collidingGround->m_coordinates.y - (static_cast<float>(collidingGround->m_sprite->m_texture.getSize().y) * collidingGround->m_sprite->m_sprite.getScale().y) / 2.f
-					- (static_cast<float>(m_sprite->m_texture.getSize().y) * m_sprite->m_sprite.getScale().y) / 2.f;
+					- (static_cast<float>(m_sprite->m_texture.getSize().y) * m_sprite->m_sprite.getScale().y) / 4.f + 2.f;
 			}
 		}
 	}
-	
-	/*for (const CollisionBoxComponent* other : m_hitBox->collisionList())
-	{
-		//if(other->m_tag == "")
-	}*/
 	/*if (!isCollidingGround)
 	{
 		m_movementComponent.isGrounded = false;

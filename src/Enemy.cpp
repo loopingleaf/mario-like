@@ -1,3 +1,4 @@
+#include "SFML/Graphics.hpp"
 #include "Enemy.h"
 
 Enemy::Enemy()
@@ -23,6 +24,12 @@ Enemy::Enemy(std::shared_ptr<GameManager> gameManager, sf::Vector2f coordinates,
 	sf::Vector2f fSize(spriteSize.x, 5.f);
 	m_collisionFeet = new CollisionBoxComponent(this, fSize, "feet", sf::Vector2f(0.f, spriteSize.y - fSize.y));
 	m_components.push_back(m_collisionFeet);
+
+	sf::Vector2f dbSize(spriteSize.x, spriteSize.y - 5.f);
+	m_damageBox = new CollisionBoxComponent(this, dbSize, "dammage", sf::Vector2f(0.f, spriteSize.y - fSize.y));
+
+	m_movement = new MovementComponent(this, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, true, sf::Vector2f(), false);
+	m_components.push_back(m_movement);
 }
 
 Enemy::Enemy(const Enemy& en)
@@ -49,4 +56,26 @@ Enemy& Enemy::operator=(const Enemy& en)
 	m_components.push_back(m_sprite);
 	m_components.push_back(m_movement);
 	return *this;
+}
+
+void Enemy::update(float dt)
+{
+	for (const CollisionBoxComponent* other : m_hitBox->collisionList())
+	{
+		if (other->m_tag == "playerFeet")
+		{
+			die();
+		}
+	}
+}
+
+void Enemy::die()
+{
+	m_gm->score += 100;
+	m_gm->scoreText.setString("score : " + std::to_string(m_gm->score));
+	const auto iterator = std::find(m_gm->entities.begin(), m_gm->entities.end(), this);
+	if (iterator != m_gm->entities.end())
+	{
+		m_gm->entities.erase(iterator);
+	}
 }

@@ -7,8 +7,11 @@
 class Enemy : public Entity
 {
 public:
+	/* Where the enemy takes damage */
 	CollisionBoxComponent* m_hitBox;
 	CollisionBoxComponent* m_collisionFeet;
+	/* Where the enemy gives damage */
+	CollisionBoxComponent* m_damageBox;
 	SpriteComponent* m_sprite;
 	MovementComponent* m_movement;
 
@@ -18,5 +21,12 @@ public:
 	~Enemy();
 	Enemy& operator=(const Enemy& en);
 
-	//void die();
+	void update(float dt) override;
+
+private:
+	/**
+	 * \brief Kills this enemy.
+	 * 
+	 */
+	void die();
 };
