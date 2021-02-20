@@ -35,6 +35,7 @@ Player::~Player()
 
 void Player::die()
 {
+	m_gm->scoreText.setString("You are dead");
 	const auto iterator = std::find(m_gm->entities.begin(), m_gm->entities.end(), this);
 	if (iterator != m_gm->entities.end())
 	{
@@ -69,10 +70,10 @@ void Player::update(float dt)
 				Enemy* enemy = static_cast<Enemy*>(cb->m_entity);
 				enemy->die();
 			}
-			/*else if(cb->m_tag == "damage")
+			else if(cb->m_tag == "damage")
 			{
 				die();
-			}*/
+			}
 		}
 	}
 	/*if (!isCollidingGround)

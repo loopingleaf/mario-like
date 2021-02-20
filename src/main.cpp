@@ -2,7 +2,6 @@
 #include "SFML/Graphics.hpp"
 #include "GameManager.h"
 #include "Player.h"
-#include "Enemy.h"
 
 int main()
 {

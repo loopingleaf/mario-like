@@ -72,6 +72,6 @@ void Enemy::die()
 	const auto iterator = std::find(m_gm->entities.begin(), m_gm->entities.end(), this);
 	if (iterator != m_gm->entities.end())
 	{
-		m_gm->entities.erase(iterator);
+		delete *iterator;
 	}
 }

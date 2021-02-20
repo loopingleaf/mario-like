@@ -141,5 +141,4 @@ void GameManager::draw()
 	{
 		entity->drawAll();
 	}
-	
 }
